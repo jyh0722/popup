@@ -87,20 +87,20 @@ $.fn.yhPopup = function (option) {
             //data 값 한번에 가져오기, 기존 디폴트 옵션 비교 후 최신 data로 수정
           if(defaultOption.$el.data("show")){
             optionData.show = true;
-          }else{
+          }else if(defaultOption.$el.data("show") == false){
             optionData.show = false;
           }
           if(defaultOption.$el.data("keyboard")){
             optionData.keyboard = true;
-          }else{
+          }else if(defaultOption.$el.data("keyboard") == false){
             optionData.keyboard = false;
           }
           if(defaultOption.$el.data("backdrop")){
             optionData.backdrop = true;
-          }else{
+          }else if(defaultOption.$el.data("backdrop") == false){
             optionData.backdrop = false
           }
-          console.log(optionData)
+          
           
 
             // js option
