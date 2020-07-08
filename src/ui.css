@@ -20,19 +20,9 @@
   border:1px solid #ccc;
   background-color:#fff;
   transform:translate(-50%, -50%);
-  /* margin-top:-20px;
-  transition:marginTop 0.5s ease 0.5S; */
 }
-/*
-.popup-container.active .pop-wrap {
-  margin-top:0;
-}
-*/
-
-
 
 /* 화면확인용 */
-
 html, body{
   height:100%;
   width:100%;

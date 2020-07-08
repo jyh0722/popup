@@ -1,112 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>UI component</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="src/ui.css">
-  </head>
-  <body>
-    <div class="popup-link-container">
-      <div class="popup-link-wrap">
-        <a href="#popup1" class="popup-link" data-toggle="popup" data-target="#popup1">POPUP LINK 1</a>
-      </div>
-      <div class="popup-link-wrap">
-        <a href="#popup2" class="popup-link" data-toggle="popup" data-target="#popup2">POPUP LINK 2</a>
-      </div>
-      <div class="popup-link-wrap">
-        <a
-          href="#popup2"
-          class="popup-link"
-          data-toggle="popup"
-          data-target="#popup7"
-          >POPUP LINK</a
-        >
-        <span class="popup-desc">(popup은 있는데, popup-container가 아닌경우)</span>
-      </div>
-      <div class="popup-link-wrap">
-        <a
-          href="#popup2"
-          class="popup-link"
-          data-toggle="popup"
-          data-target="#popup88"
-          >POPUP LINK</a
-        >
-        <span class="popup-desc">(popup이 없는 경우)</span>
-      </div>
-    </div>
-    
-    <div
-      class="popup-container"
-      id="popup1"
-      data-show="false"
-      data-backdrop="true"
-      data-keyboard="true"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="titPopup"
-      aria-describedby="descPopup"
-    >
-      <div class="pop-wrap" role="document">
-        <div class="pop-header">
-          <h1 class="tit-pop" id="titPopup">POPUP1</h1>
-          <button type="button" class="btn-close">
-            <span class="text-close">close</span>
-            </button>
+    <head>
+        <title>UI component</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="src/ui.css">
+    </head>
+    <body>
+        <div class="popup-link-container">
+            <div class="popup-link-wrap">
+                <a href="#popup1" class="popup-link" data-toggle="popup" data-target="#popup1">POPUP LINK 1</a>
+            </div>
+            <div class="popup-link-wrap">
+                <a href="#popup2" class="popup-link" data-toggle="popup" data-target="#popup2">POPUP LINK 2</a>
+            </div>
+            <div class="popup-link-wrap">
+                <a href="#popup2" class="popup-link" data-toggle="popup" data-target="#popup7">POPUP LINK</a>
+                <span class="popup-desc">(popup은 있는데, popup-container가 아닌경우)</span>
+            </div>
+            <div class="popup-link-wrap">
+                <a href="#popup2" class="popup-link" data-toggle="popup" data-target="#popup88">POPUP LINK</a>
+                <span class="popup-desc">(popup이 없는 경우)</span>
+            </div>
         </div>
-        <div class="pop-content" id="descPopup">
-          <p class="content">content..</p>
-        </div>
-      </div>
-    </div>
 
-    <div
-      class="popup-container"
-      id="popup2"
-         data-show = "false"
-      data-backdrop="true"
-      data-keyboard="true"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="titPopup2"
-      aria-describedby="descPopup2"
-    >
-      <div class="pop-wrap" role="document">
-        <div class="pop-header">
-          <h1 class="tit-pop" id="titPopup2">POPUP2</h1>
+        
+        <div class="popup-container" id="popup1" data-show="false" data-backdrop="true" data-keyboard="true" tabindex="-1" role="dialog" aria-labelledby="titPopup" aria-describedby="descPopup">
+            <div class="pop-wrap" role="document">
+                <div class="pop-header">
+                    <h1 class="tit-pop" id="titPopup">POPUP1</h1>
+                    <button type="button" class="btn-close">
+                        <span class="text-close">close</span>
+                    </button>
+                </div>
+                <div class="pop-content" id="descPopup">
+                    <p class="content">content..</p>
+                </div>
+            </div>
         </div>
-        <div class="pop-content" id="descPopup2">
-          <p class="content">content2..</p>
-          
-          <input type="button" value="btn1"></input>
-          <input type="button" value="btn2"></input>
-          <input type="button" value="btn3"></input>
-        </div>
-        <button type="button" class="btn-close"><span class="text-close">close</span></button>
-      </div>
-    </div>
+        <div class="popup-container" id="popup2" data-show="false" data-backdrop="true" data-keyboard="true" tabindex="-1" role="dialog" aria-labelledby="titPopup2" aria-describedby="descPopup2">
+            <div class="pop-wrap" role="document">
+                <div class="pop-header">
+                    <h1 class="tit-pop" id="titPopup2">POPUP2</h1>
+                </div>
+                <div class="pop-content" id="descPopup2">
+                    <p class="content">content2..</p>
 
-    <div
-      class="popup-container"
-      id="popup3"
-      data-show="false"
-      data-backdrop="true"
-      data-keyboard="true"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="titPopup3"
-      aria-describedby="descPopup3"
-    >
-      <div class="pop-wrap" role="document">
-        <div class="pop-header">
-          <h1 class="tit-pop" id="titPopup3">popup3</h1>
-          <button type="button" class="btn-close">close</button>
+                    <input type="button" value="btn1"></input>
+                    <input type="button" value="btn2"></input>
+                    <input type="button" value="btn3"></input>
+                </div>
+                <button type="button" class="btn-close">
+                    <span class="text-close">close</span></button>
+            </div>
         </div>
-        <div class="pop-content" id="descPopup3">
-          <p class="content">content3..</p>
+        <div class="popup-container" id="popup3" data-show="false" data-backdrop="true" data-keyboard="true" tabindex="-1" role="dialog" aria-labelledby="titPopup3" aria-describedby="descPopup3">
+            <div class="pop-wrap" role="document">
+                <div class="pop-header">
+                    <h1 class="tit-pop" id="titPopup3">popup3</h1>
+                    <button type="button" class="btn-close">close</button>
+                </div>
+                <div class="pop-content" id="descPopup3">
+                    <p class="content">content3..</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="src/index.js"></script>
-  </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="src/index.js"></script>
+    </body>
 </html>
