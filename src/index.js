@@ -37,7 +37,6 @@ $.fn.yhPopup = function (option) {
           //팝업 내부가 아닌경우 클릭 시 닫힘
             if (setting.backdrop) {
                 setting.$el.on("click", function (e) {
-                  console.log(e.target.className)
                   if (!setting.$el.find(".pop-wrap").find("*").hasClass(e.target.className)){
                     if(!setting.$el.find(".pop-wrap").hasClass(e.target.className)) {
                           e.preventDefault();
@@ -88,27 +87,21 @@ $.fn.yhPopup = function (option) {
             //data 값 한번에 가져오기, 기존 디폴트 옵션 비교 후 최신 data로 수정
           if(defaultOption.$el.data("show")){
             optionData.show = true;
-          }else if(!defaultOption.$el.data("show")){
+          }else{
             optionData.show = false;
           }
           if(defaultOption.$el.data("keyboard")){
             optionData.keyboard = true;
-          }else if(!defaultOption.$el.data("keyboard")){
+          }else{
             optionData.keyboard = false;
           }
           if(defaultOption.$el.data("backdrop")){
             optionData.backdrop = true;
-          }else if(!defaultOption.$el.data("backdrop")){
+          }else{
             optionData.backdrop = false
           }
+          console.log(optionData)
           
-            // optionData = {
-            //     show: false,
-            //     keyboard: true,
-            //     backdrop: true,
-            //     $el: $el,
-            //     $focus: $(":focus")
-            //  }
 
             // js option
             if (option === undefined || option === "show") {
@@ -185,7 +178,3 @@ $(function () {
 //   keyboard: false,
 //   backdrop: true
 // });
-
-// :nth-child(2n+1){ clear: both; }
-// - window : 1q2w3e4r@
-// - Supervisor Password, User Password : 1q2w3e4r5t!
