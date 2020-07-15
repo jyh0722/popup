@@ -5,17 +5,16 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 var del = require('del');
-var liver = require('livereload')
 
 //경로 설정
 var paths = {
   styles: {
-    src: 'popup/src/**/*.css',
-    dest: 'popup/dist/styles/'
+    src: 'src/**/*.css',
+    dest: 'dist/styles/'
   },
   scripts: {
-    src: 'popup/src/**/*.js',
-    dest: 'popup/dist/scripts/'
+    src: 'src/**/*.js',
+    dest: 'dist/scripts/'
   }
 };
 
@@ -33,8 +32,7 @@ function styles() {
       basename: 'main',
       suffix: '.min'
     }))
-    .pipe(gulp.dest(paths.styles.dest))
-    .pipe(livereload());
+    .pipe(gulp.dest(paths.styles.dest));
 }
 
 function scripts() {
@@ -42,14 +40,8 @@ function scripts() {
     .pipe(babel())
     .pipe(uglify())
     .pipe(concat('main.min.js'))
-    .pipe(gulp.dest(paths.scripts.dest))
-    .pipe(livereload());
+    .pipe(gulp.dest(paths.scripts.dest));
 }
-
-gulp.task('live', ['html', 'js:combine', 'scss:compile'], function () { 
-  /** * livereload.listen() 옵션값으로 기본 경로를 지정 */ 
-  livereload.listen( { basePath: dist } ); 
-});
 
 function watch() {
   gulp.watch(paths.scripts.src, scripts);
