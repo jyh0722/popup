@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 var del = require('del');
+var connect = require('gulp-connect');
 
 //경로 설정
 var paths = {
@@ -19,13 +20,14 @@ var paths = {
 };
 
 
-function clean() {
-  return del([ 'assets' ]);
+function clean(done) {
+  del([ 'asset' ]);
+  done();
 }
 
 // 각 작업용 함수 ( gulp.task() 기능 )
-function styles() {
-  return gulp.src(paths.styles.src)
+function styles(done) {
+  gulp.src(paths.styles.src)
     .pipe(cleanCSS())
     // pass in options to the stream
     .pipe(rename({
@@ -33,15 +35,35 @@ function styles() {
       suffix: '.min'
     }))
     .pipe(gulp.dest(paths.styles.dest));
+    done();
+  
 }
 
-function scripts() {
-  return gulp.src(paths.scripts.src, { sourcemaps: true })
+function scripts(done) {
+  gulp.src(paths.scripts.src, { sourcemaps: true })
     .pipe(babel())
     .pipe(uglify())
     .pipe(concat('main.min.js'))
     .pipe(gulp.dest(paths.scripts.dest));
+    done();
 }
+
+
+function connect0(a){
+  connect.server({
+    root: 'dist/',
+    livereload: true,
+    port: 8080
+});
+a();
+}
+
+function html(){
+  return gulp.src('src/**/*.html')
+  .pipe(gulp.dest('dist'))
+  .pipe(connect.reload());
+}
+
 
 function watch() {
   gulp.watch(paths.scripts.src, scripts);
@@ -51,7 +73,7 @@ function watch() {
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
  */
-var build = gulp.series(clean, gulp.parallel(styles, scripts));
+var build = gulp.series(connect0, clean, html, gulp.parallel(styles, scripts));
 
 /*
  * You can use CommonJS `exports` module notation to declare tasks
