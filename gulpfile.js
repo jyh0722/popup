@@ -1,11 +1,11 @@
 var gulp = require('gulp');
-var babel = require('gulp-babel');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var cleanCSS = require('gulp-clean-css');
-var del = require('del');
-var connect = require('gulp-connect');
+var babel = require('gulp-babel'); //ES6, ES5 간 변환
+var concat = require('gulp-concat'); //여러 관련 파일 합치기
+var uglify = require('gulp-uglify'); //js 압축
+var rename = require('gulp-rename'); //파일 복사 및 파일명 변경
+var cleanCSS = require('gulp-clean-css'); //CSS 삭제
+var del = require('del'); //삭제
+var connect = require('gulp-connect'); //서버화 시키기, 자동 리로드
 
 //경로 설정
 var paths = {
@@ -66,7 +66,7 @@ function html(){
 
 
 function watch() {
-  gulp.watch(paths.scripts.src, scripts);
+  gulp.watch(paths.scripts.src, scripts); //watch : 변경사항 추적
   gulp.watch(paths.styles.src, styles);
 }
 
