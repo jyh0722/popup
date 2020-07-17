@@ -6,6 +6,7 @@ var rename = require('gulp-rename'); //파일 복사 및 파일명 변경
 var cleanCSS = require('gulp-clean-css'); //CSS 삭제
 var del = require('del'); //삭제
 var connect = require('gulp-connect'); //서버화 시키기, 자동 리로드
+var browserSync = require('browser-sync').create();
 
 //경로 설정
 var paths = {
@@ -34,7 +35,10 @@ function styles(done) {
       basename: 'main',
       suffix: '.min'
     }))
-    .pipe(gulp.dest(paths.styles.dest));
+    .pipe(gulp.dest(paths.styles.dest))
+    .pipe(browserSync.reload({
+      stream : true
+    }));
     done();
   
 }
@@ -44,26 +48,43 @@ function scripts(done) {
     .pipe(babel())
     .pipe(uglify())
     .pipe(concat('main.min.js'))
-    .pipe(gulp.dest(paths.scripts.dest));
+    .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(browserSync.reload({
+      stream : true
+    }));
     done();
 }
 
 
-function connect0(a){
-  connect.server({
-    root: 'dist/',
-    livereload: true,
-    port: 8080
-});
-a();
-}
+// function connect0(a){
+//   connect.server({
+//     root: 'dist/',
+//     livereload: true,
+//     port: 8080
+// });
+// a();
+// }
 
-function html(){
-  return gulp.src('src/**/*.html')
+
+function html(done){
+  gulp.src('src/**/*.html')
   .pipe(gulp.dest('dist'))
-  .pipe(connect.reload());
+  .pipe(browserSync.reload({
+    stream : true
+  }));
+  done();
 }
 
+function browserSync(done){
+  browserSync.init({
+    port : 8080,
+    server:{
+      baseDir : 'dist/'
+
+    }
+  })
+  done();
+}
 
 function watch() {
   gulp.watch(paths.scripts.src, scripts); //watch : 변경사항 추적
@@ -73,7 +94,7 @@ function watch() {
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
  */
-var build = gulp.series(connect0, clean, html, gulp.parallel(styles, scripts));
+var build = gulp.series(browserSync, clean, html, gulp.parallel(styles, scripts));
 
 /*
  * You can use CommonJS `exports` module notation to declare tasks
